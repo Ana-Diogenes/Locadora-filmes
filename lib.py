@@ -40,3 +40,23 @@ def excluir_filme():
                 filmes.write(mensagem)
             else:
                 filmes.write('\n'+mensagem)
+
+def buscar_filme():
+    buscado = input('Informe o filme que deseja buscar: ')
+    with open ('filmes.csv','r') as filmes:
+        lista_filmes = csv.reader(filmes, delimiter=',')
+        encontrado = False
+        for i,linha in enumerate(lista_filmes):
+            if (linha[0]).lower() == buscado.lower():
+                encontrado = True
+                print('Titulo:',linha[0])
+                print('Classificacao indicativa:',linha[1])
+                print('Genero:',linha[2])
+                print('Sinopse:',linha[3])
+                if linha[4]=='disponivel':
+                    print('O filme está disponivel para aluguel!')
+                else:
+                    print ('O filme não está disponivel para aluguel')
+        if encontrado == False:
+            print('Não encontramos o filme que deseja')
+buscar_filme()
