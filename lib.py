@@ -10,10 +10,6 @@ def mostrar_filmes():
                 print(i,':',linha[0],'(alugado)')
 
 
-titulo = input('Informe o titulo do filme: ')
-classificacao = input('Informe a classificação indicativa do filme: ')
-genero = input('Informe o genero do filme: ')
-sinopse = input ('Informe a sinopse do filme: ')
 
 def inserir_filme():
     titulo = input('Informe o titulo do filme: ')
