@@ -20,3 +20,23 @@ def inserir_filme():
     with open('filmes.csv',"a") as filmes:
         filmes.write(mensagem)
 
+def excluir_filme():
+    excluido = input('Informe o nome do filme que deseja excluir: ')
+    lista_nova = []
+    with open('filmes.csv',"r") as filmes:
+        lista_filmes = csv.reader(filmes, delimiter=",")
+        for i,linha in enumerate(lista_filmes):
+            if (linha [0]).lower() != (excluido).lower():
+                lista_nova.append(linha)
+    with open ('filmes.csv','w') as filmes:
+        for i,linha in enumerate(lista_nova):
+            titulo = linha[0]
+            classificacao = linha[1]
+            genero = linha[2]
+            sinopse = linha[3]
+            status = linha [4]
+            mensagem = titulo +','+ classificacao +',' + genero.lower() +',' + sinopse + status
+            if i==0:
+                filmes.write(mensagem)
+            else:
+                filmes.write('\n'+mensagem)
