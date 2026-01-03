@@ -113,3 +113,15 @@ def devolver_filme():
                     filmes.write(mensagem)
                 else:
                     filmes.write('\n'+mensagem)
+
+def indicação_personalizada():
+    classificacao = input('Informe a classificacao que prefere: ')
+    genero = input('Informe o genero de filme que gosta: ')
+    with open ('filmes.csv','r') as filmes:
+        lista_filmes = csv.reader(filmes,delimiter=',')
+        for linha in lista_filmes:
+            if linha[1].lower() == classificacao.lower() and linha[2].lower()== genero.lower() and linha[4]=='disponivel':
+                print ('voce pode gostar do filme',linha[0],'!')
+                print('sinopse:',linha[3])
+
+indicação_personalizada()
