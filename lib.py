@@ -9,8 +9,6 @@ def mostrar_filmes():
             elif i!=0 and linha[4]!= "disponivel":
                 print(i,':',linha[0],'(alugado)')
 
-
-
 def inserir_filme():
     titulo = input('Informe o titulo do filme: ')
     classificacao = input('Informe a classificação indicativa do filme: ')
@@ -25,7 +23,7 @@ def excluir_filme():
     lista_nova = []
     with open('filmes.csv',"r") as filmes:
         lista_filmes = csv.reader(filmes, delimiter=",")
-        for i,linha in enumerate(lista_filmes):
+        for linha in lista_filmes:
             if (linha [0]).lower() != (excluido).lower():
                 lista_nova.append(linha)
     with open ('filmes.csv','w') as filmes:
@@ -35,7 +33,7 @@ def excluir_filme():
             genero = linha[2]
             sinopse = linha[3]
             status = linha [4]
-            mensagem = titulo +','+ classificacao +',' + genero.lower() +',' + sinopse + status
+            mensagem = titulo +','+ classificacao +',' + genero.lower() +',' + sinopse +','+ status
             if i==0:
                 filmes.write(mensagem)
             else:
@@ -46,7 +44,7 @@ def buscar_filme():
     with open ('filmes.csv','r') as filmes:
         lista_filmes = csv.reader(filmes, delimiter=',')
         encontrado = False
-        for i,linha in enumerate(lista_filmes):
+        for linha in lista_filmes:
             if (linha[0]).lower() == buscado.lower():
                 encontrado = True
                 print('Titulo:',linha[0])
@@ -59,4 +57,31 @@ def buscar_filme():
                     print ('O filme não está disponivel para aluguel')
         if encontrado == False:
             print('Não encontramos o filme que deseja')
-buscar_filme()
+
+def locar_filme():
+    locado = input('Informe o filme que deseja locar: ')
+    with open ('filmes.csv','r') as filmes:
+        lista_filmes = csv.reader(filmes,delimiter=',')
+        lista_nova =[]
+        for linha in lista_filmes:
+            if (linha[0]).lower() == locado.lower() and linha[4]== 'disponivel':
+                filme = [linha[0],linha[1],linha[2],linha[3],'alugado']
+                lista_nova.append(filme)
+                print('O filme foi locado com sucesso! Não se esqueça de devolver!')
+            elif (linha[0]).lower() == locado.lower() and linha[4]!= 'disponivel':
+                print ('O filme que você deseja não está disponivel!')
+                return
+            else:
+                lista_nova.append(linha)
+        with open ('filmes.csv','w') as filmes:
+            for i,linha in enumerate(lista_nova):
+                titulo = linha[0]
+                classificacao = linha[1]
+                genero = linha[2]
+                sinopse = linha[3]
+                status = linha [4]
+                mensagem = titulo +','+ classificacao +',' + genero.lower() +',' + sinopse +','+ status
+                if i==0:
+                    filmes.write(mensagem)
+                else:
+                    filmes.write('\n'+mensagem)
