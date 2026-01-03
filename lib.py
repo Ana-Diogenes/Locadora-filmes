@@ -1,4 +1,5 @@
 import csv
+from tkinter import *
 
 def mostrar_filmes():
     with open('filmes.csv',"r") as filmes:
@@ -124,4 +125,3 @@ def indicação_personalizada():
                 print ('voce pode gostar do filme',linha[0],'!')
                 print('sinopse:',linha[3])
 
-indicação_personalizada()
