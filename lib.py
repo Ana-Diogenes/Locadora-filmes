@@ -44,22 +44,24 @@ def excluir_filme():
                 filmes.write('\n'+mensagem)
 
 def buscar_filme(buscado):
+    resposta = ''
     with open ('filmes.csv','r') as filmes:
         lista_filmes = csv.reader(filmes, delimiter=',')
         encontrado = False
         for linha in lista_filmes:
             if (linha[0]).lower() == buscado.lower():
                 encontrado = True
-                print('Titulo:',linha[0])
-                print('Classificacao indicativa:',linha[1])
-                print('Genero:',linha[2])
-                print('Sinopse:',linha[3])
+                resposta += ('Titulo: '+ str(linha[0])+'\n')
+                resposta += ('Classificacao indicativa: '+(linha[1])+'\n')
+                resposta += ('Genero: '+ str(linha[2])+'\n')
+                resposta += ('Sinopse: '+ str(linha[3])+'\n')
                 if linha[4]=='disponivel':
-                    print('O filme está disponivel para aluguel!')
+                    resposta += ('O filme está disponivel para aluguel!')
                 else:
-                    print ('O filme não está disponivel para aluguel')
+                    resposta += ('O filme não está disponivel para aluguel')
         if encontrado == False:
-            print('Não encontramos o filme que deseja')
+            resposta = ('Não encontramos o filme que deseja')
+    return resposta
 
 def locar_filme():
     locado = input('Informe o filme que deseja locar: ')
