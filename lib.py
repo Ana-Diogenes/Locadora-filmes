@@ -127,3 +127,11 @@ def indicação_personalizada():
                 print ('voce pode gostar do filme',linha[0],'!')
                 print('sinopse:',linha[3])
 
+def modo_busca():
+    global modo
+    modo = 'busca'
+
+def limpar_tela():
+    global locadora
+    for widget in locadora.winfo_children():
+        widget.place_forget()
