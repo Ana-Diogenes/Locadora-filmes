@@ -132,7 +132,4 @@ def limpar_tela(locadora):
     for widget in locadora.winfo_children():
         widget.place_forget()
 
-# def modo_busca():
-#     global modo
-#     modo = 'busca'
-#     main()
+

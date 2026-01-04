@@ -14,6 +14,31 @@ def modo_busca():
     modo = 'busca'
     tela()
 
+def modo_locar():
+    global modo
+    modo = 'locar'
+    tela()
+
+def modo_devolver():
+    global modo
+    modo = 'devolver'
+    tela()
+
+def modo_cadastrar():
+    global modo
+    modo = 'cadastrar'
+    tela()
+
+def modo_remover():
+    global modo
+    modo = 'remover'
+    tela()
+
+def modo_recomendar():
+    global modo
+    modo = 'recomendar'
+    tela()
+
 def tela():
     limpar_tela(locadora)
     if modo == 'inicio':
@@ -24,13 +49,13 @@ def tela():
 
         buscar = Button(locadora, text='Buscar filme', command=modo_busca, font=('Arial',12))
         buscar.place(relx=0.1,y=140, width=120, height=50, anchor='center')
-        locar = Button(locadora, text='Locar filme', command=locar_filme, font=('Arial',12))
+        locar = Button(locadora, text='Locar filme', command=modo_locar, font=('Arial',12))
         locar.place(relx=0.3, y=140, width=120, height=50, anchor='center')
-        devolver = Button(locadora, text='Devolver filme', command=devolver_filme, font=('Arial',12))
+        devolver = Button(locadora, text='Devolver filme', command=modo_devolver, font=('Arial',12))
         devolver.place(relx=0.5, y=140, width=120, height=50, anchor='center')
-        cadastrar = Button(locadora, text='Cadastrar filme', command=inserir_filme, font=('Arial',12))
+        cadastrar = Button(locadora, text='Cadastrar filme', command=modo_cadastrar, font=('Arial',12))
         cadastrar.place(relx=0.7, y=140, width=120, height=50, anchor='center')
-        remover = Button(locadora, text='Remover filme', command=excluir_filme, font=('Arial',12))
+        remover = Button(locadora, text='Remover filme', command=modo_remover, font=('Arial',12))
         remover.place(relx=0.9, y=140, width=120, height=50, anchor='center')
 
         catalogo = Label(locadora, text='Catalogo:',background='#fff3ac', font=('Arial',16))
@@ -40,11 +65,27 @@ def tela():
         filmes.insert(INSERT,mostrar_filmes())
         filmes.configure(state='disabled')
 
-        recomendacao = Button(locadora,text='Recomendação personalizada!', command=indicação_personalizada,font=('Arial',12))
+        recomendacao = Button(locadora,text='Recomendação personalizada!', command=modo_recomendar,font=('Arial',12))
         recomendacao.place(relx=0.5, y= 470, anchor='center')
-    else:
+
+    elif modo == 'busca':
         h1=Label(text='a')
         h1.place(y=0,x=0)
+
+    elif modo == 'locar':
+        h1 = Label()
+
+    elif modo == 'devolver':
+        h1 = Label()
+
+    elif modo == 'cadastrar':
+        h1 = Label()
+
+    elif modo == 'remover':
+        h1 = Label()
+    
+    elif modo == 'recomendar':
+        h1 = Label()
 
 tela()
 locadora.mainloop()
