@@ -43,8 +43,7 @@ def excluir_filme():
             else:
                 filmes.write('\n'+mensagem)
 
-def buscar_filme():
-    buscado = input('Informe o filme que deseja buscar: ')
+def buscar_filme(buscado):
     with open ('filmes.csv','r') as filmes:
         lista_filmes = csv.reader(filmes, delimiter=',')
         encontrado = False
