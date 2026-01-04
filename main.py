@@ -1,5 +1,6 @@
 from lib import *
 from tkinter import *
+from tkinter.scrolledtext import *
 
 locadora = Tk()
 locadora.title('Locadora de filmes :)')
@@ -21,5 +22,12 @@ cadastrar = Button(locadora, text='Cadastrar filme', command=inserir_filme, font
 cadastrar.place(relx=0.7, y=140, width=120, height=50, anchor='center')
 remover = Button(locadora, text='Remover filme', command=excluir_filme, font=('Arial',12))
 remover.place(relx=0.9, y=140, width=120, height=50, anchor='center')
+
+catalogo = Label(locadora, text='Catalogo:',background='#fff3ac', font=('Arial',16))
+catalogo.place(relx=0.5,y=190,anchor='center')
+filmes = ScrolledText(locadora, width=70, height=12, font=('Arial',12))
+filmes.place(relx=0.5, y=330,anchor='center')
+filmes.insert(INSERT,mostrar_filmes())
+filmes.configure(state='disabled')
 
 locadora.mainloop()

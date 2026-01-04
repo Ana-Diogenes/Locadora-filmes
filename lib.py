@@ -2,13 +2,15 @@ import csv
 from tkinter import *
 
 def mostrar_filmes():
+    catalogo = ''
     with open('filmes.csv',"r") as filmes:
         lista_filmes = csv.reader(filmes, delimiter=",")
         for i,linha in enumerate(lista_filmes):
             if i!=0 and linha[4]=="disponivel":
-                print(i,':',linha[0])
+                catalogo += str(i) + ': ' + linha[0] + '\n'
             elif i!=0 and linha[4]!= "disponivel":
-                print(i,':',linha[0],'(alugado)')
+                catalogo += str(i) + ': ' + linha[0] +' (alugado)'+ '\n'
+    return catalogo
 
 def inserir_filme():
     titulo = input('Informe o titulo do filme: ')
