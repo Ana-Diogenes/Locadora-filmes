@@ -97,8 +97,9 @@ def locar_filme(locado):
                     filmes.write('\n'+mensagem)
     return resposta
 
-def devolver_filme():
-    devolvido = input('Informe o filme que deseja devolver: ')
+def devolver_filme(devolvido):
+    achou = False
+    resposta = ''
     with open ('filmes.csv','r') as filmes:
         lista_filmes = csv.reader(filmes,delimiter=',')
         lista_nova =[]
@@ -106,12 +107,17 @@ def devolver_filme():
             if (linha[0]).lower() == devolvido.lower() and linha[4]== 'alugado':
                 filme = [linha[0],linha[1],linha[2],linha[3],'disponivel']
                 lista_nova.append(filme)
-                print('O filme foi devolvido com sucesso!')
+                resposta = ('O filme foi devolvido com sucesso!')
+                achou = True
             elif (linha[0]).lower() == devolvido.lower() and linha[4]!= 'alugado':
-                print ('O filme em questão já foi devolvido!')
-                return
+                achou = True
+                return ('O filme em questão não foi alugado')
+                
             else:
                 lista_nova.append(linha)
+
+        if achou == False:
+            return ('Não encontramos o filme que deseja devolver')
         with open ('filmes.csv','w') as filmes:
             for i,linha in enumerate(lista_nova):
                 titulo = linha[0]
@@ -124,6 +130,7 @@ def devolver_filme():
                     filmes.write(mensagem)
                 else:
                     filmes.write('\n'+mensagem)
+    return resposta
 
 def indicação_personalizada():
     classificacao = input('Informe a classificacao que prefere: ')
