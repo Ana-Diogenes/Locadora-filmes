@@ -44,9 +44,6 @@ def modo_inicio():
     modo = 'inicio'
     tela()
 
-
-
-
 def tela():
     def pegar_texto():
         return texto.get()
@@ -54,6 +51,11 @@ def tela():
     def fazer_busca():
         buscado = pegar_texto()
         resultado = buscar_filme(buscado)
+        resposta ['text'] = resultado
+
+    def fazer_locacao():
+        locado = pegar_texto()
+        resultado = locar_filme(locado)
         resposta ['text'] = resultado
 
     limpar_tela(locadora)
@@ -100,7 +102,18 @@ def tela():
 
 
     elif modo == 'locar':
-        h1 = Label()
+        h1 = Label(locadora, text='Qual filme deseja locar?', background='#fff3ac', font=('Arial',32,"bold"))
+        h1.place(relx=0.5,y=30, anchor='center')
+        texto = StringVar()
+        info = Entry(locadora,textvariable=texto, font=('Arial',12))
+        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        enviar_info = Button(locadora, text='Locar', font=('Arial',12), width=7, command=fazer_locacao)
+        enviar_info.place(relx=0.45,y=130, anchor='center')
+        voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7)
+        voltar.place(relx=0.55, y=130, anchor='center' )
+
+        resposta = Label(locadora, text='',font=('Arial',12), background='#fff3ac', wraplength=400)
+        resposta.place(relx=0.5,y=200, anchor=N)
 
     elif modo == 'devolver':
         h1 = Label()
