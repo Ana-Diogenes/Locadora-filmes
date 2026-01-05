@@ -74,6 +74,13 @@ def tela():
         resultado = excluir_filme(removido)
         resposta['text']= resultado
 
+    def fazer_recomendação():
+        classificacao_rec = classificacao.get()
+        genero_rec = genero.get()
+        resultado = indicação_personalizada(classificacao_rec, genero_rec)
+        resposta['text']= resultado
+
+
     limpar_tela(locadora)
     if modo == 'inicio':
         h1 = Label(locadora, text='Seja bem vindo a locadora!', background='#2d3250', font=('Arial',32,"bold"),foreground='#ffffff')
@@ -197,8 +204,35 @@ def tela():
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
         resposta.place(relx=0.5,y=200, anchor=N)    
+
     elif modo == 'recomendar':
-        h1 = Label()
+        h1 = Label(locadora, text='Que tipo de filme você gosta?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
+        h1.place(relx=0.5,y=50, anchor='center')
+
+        label_c = Label (locadora, text='Classificacao indicativa:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_c.place(relx=0.4, y=120, anchor='center')
+        classificacoes = ["L", "10", "12", "14","16","18"]
+        classificacao = StringVar()
+        classificacao.set("Classificacoes")
+        menu_c = OptionMenu(locadora, classificacao, *classificacoes)
+        menu_c.place(relx=0.4, y=150, anchor='center')
+
+        label_g = Label (locadora, text='Genero:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_g.place(relx=0.6, y=120, anchor='center')
+        generos = ['drama','romance','ficcao cientifica','acao','fantasia','aventura','animacao','terror','comedia']
+        genero = StringVar()
+        genero.set("Generos")
+        menu_g = OptionMenu(locadora, genero, *generos, )
+        menu_g.place(relx=0.6, y=150, anchor='center')
+
+        enviar_info = Button(locadora, text='Encontrar filme', font=('Arial',12), command=fazer_recomendação, foreground='#2d3250', background='#ffcbcf')
+        enviar_info.place(relx=0.4,y=190, anchor='center')
+        voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
+        voltar.place(relx=0.6, y=190, anchor='center')
+
+        resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
+        resposta.place(relx=0.5,y=220, anchor=N)
+        
 
 tela()
 locadora.mainloop()
