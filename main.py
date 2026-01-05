@@ -45,32 +45,34 @@ def modo_inicio():
     tela()
 
 def tela():
-    def pegar_texto(texto):
-        return texto.get()
     
     def fazer_busca():
-        buscado = pegar_texto(texto)
+        buscado = texto.get()
         resultado = buscar_filme(buscado)
         resposta ['text'] = resultado
 
     def fazer_locacao():
-        locado = pegar_texto(texto)
+        locado = texto.get()
         resultado = locar_filme(locado)
         resposta ['text'] = resultado
 
     def fazer_devolucao():
-        devolvido = pegar_texto(texto)
+        devolvido = texto.get()
         resultado = devolver_filme(devolvido)
         resposta ['text'] = resultado
 
     def fazer_cadastro():
-        titulo_cadastro = pegar_texto(titulo)
-        classificacao_cadastro = pegar_texto(classificacao)
-        genero_cadastro = pegar_texto(genero)
-        sinopse_cadastro = pegar_texto(sinopse)
+        titulo_cadastro = titulo.get()
+        classificacao_cadastro = classificacao.get()
+        genero_cadastro = genero.get()
+        sinopse_cadastro = sinopse.get()
         resultado = inserir_filme(titulo_cadastro, classificacao_cadastro,genero_cadastro,sinopse_cadastro)
         resposta ['text']=resultado
 
+    def fazer_remocao():
+        removido = texto.get()
+        resultado = excluir_filme(removido)
+        resposta['text']= resultado
 
     limpar_tela(locadora)
     if modo == 'inicio':
@@ -183,8 +185,18 @@ def tela():
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
         resposta.place(relx=0.5,y=440, anchor=N)
     elif modo == 'remover':
-        h1 = Label()
-    
+        h1 = Label(locadora, text='Qual filme deseja remover?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
+        h1.place(relx=0.5,y=30, anchor='center')
+        texto = StringVar()
+        info = Entry(locadora,textvariable=texto, font=('Arial',12), background = "#606378", foreground = '#ffffff')
+        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        enviar_info = Button(locadora, text='Remover', font=('Arial',12), width=7, command=fazer_remocao, foreground='#2d3250', background='#ffcbcf')
+        enviar_info.place(relx=0.45,y=130, anchor='center')
+        voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
+        voltar.place(relx=0.55, y=130, anchor='center' )
+
+        resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
+        resposta.place(relx=0.5,y=200, anchor=N)    
     elif modo == 'recomendar':
         h1 = Label()
 

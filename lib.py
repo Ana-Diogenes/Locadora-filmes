@@ -21,14 +21,18 @@ def inserir_filme(titulo, classificacao, genero, sinopse):
         filmes.write(mensagem)
     return 'Filme inserido com sucesso'
 
-def excluir_filme():
-    excluido = input('Informe o nome do filme que deseja excluir: ')
+def excluir_filme(excluido):
     lista_nova = []
+    achou = False
     with open('filmes.csv',"r") as filmes:
         lista_filmes = csv.reader(filmes, delimiter=",")
         for linha in lista_filmes:
             if (linha [0]).lower() != (excluido).lower():
                 lista_nova.append(linha)
+            elif (linha [0]).lower() == (excluido).lower():
+                achou = True
+    if achou == False:
+        return 'O filme que deseja excluir não foi encontrado'
     with open ('filmes.csv','w') as filmes:
         for i,linha in enumerate(lista_nova):
             titulo = linha[0]
@@ -41,6 +45,7 @@ def excluir_filme():
                 filmes.write(mensagem)
             else:
                 filmes.write('\n'+mensagem)
+    return 'Filme deletado com sucesso!'
 
 def buscar_filme(buscado):
     resposta = ''
