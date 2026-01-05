@@ -137,12 +137,14 @@ def devolver_filme(devolvido):
     return resposta
 
 def indicação_personalizada(classificacao, genero):
+    quantidade_filmes = 0
     mensagem = 'Voce pode gostar do(s) filme(s):\n'
     with open ('filmes.csv','r') as filmes:
         lista_filmes = csv.reader(filmes,delimiter=',')
         for linha in lista_filmes:
-            if linha[1].lower() == classificacao.lower() and linha[2].lower()== genero.lower() and linha[4]=='disponivel':
+            if linha[1].lower() == classificacao.lower() and linha[2].lower()== genero.lower() and linha[4]=='disponivel' and quantidade_filmes<2:
                 mensagem += ('\ntitulo: '+str(linha[0])+'\nsinopse: '+ str(linha[3])+'\n')
+                quantidade_filmes+=1
     if mensagem == 'Voce pode gostar do(s) filme(s):\n':
         return 'Não encontramos o filme com as caracteristicas que deseja'
     return mensagem
@@ -150,5 +152,3 @@ def indicação_personalizada(classificacao, genero):
 def limpar_tela(locadora):
     for widget in locadora.winfo_children():
         widget.place_forget()
-
-

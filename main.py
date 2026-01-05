@@ -111,46 +111,46 @@ def tela():
 
     elif modo == 'busca':
         h1 = Label(locadora, text='Qual filme deseja buscar?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
-        h1.place(relx=0.5,y=30, anchor='center')
+        h1.place(relx=0.5,y=110, anchor='center')
         texto = StringVar()
         info = Entry(locadora,textvariable=texto, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        info.place(relx=0.5, y=170, anchor='center', width=300, height=30)
         enviar_info = Button(locadora, text='Procurar', font=('Arial',12), width=7, command=fazer_busca, foreground='#2d3250', background='#ffcbcf')
-        enviar_info.place(relx=0.45,y=130, anchor='center')
+        enviar_info.place(relx=0.45,y=210, anchor='center')
         voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
-        voltar.place(relx=0.55, y=130, anchor='center' )
+        voltar.place(relx=0.55, y=210, anchor='center' )
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
-        resposta.place(relx=0.5,y=200, anchor=N)
+        resposta.place(relx=0.5,y=270, anchor=N)
 
 
     elif modo == 'locar':
         h1 = Label(locadora, text='Qual filme deseja locar?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
-        h1.place(relx=0.5,y=30, anchor='center')
+        h1.place(relx=0.5,y=110, anchor='center')
         texto = StringVar()
         info = Entry(locadora,textvariable=texto, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        info.place(relx=0.5, y=170, anchor='center', width=300, height=30)
         enviar_info = Button(locadora, text='Locar', font=('Arial',12), width=7, command=fazer_locacao, foreground='#2d3250', background='#ffcbcf')
-        enviar_info.place(relx=0.45,y=130, anchor='center')
+        enviar_info.place(relx=0.45,y=210, anchor='center')
         voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
-        voltar.place(relx=0.55, y=130, anchor='center' )
+        voltar.place(relx=0.55, y=210, anchor='center' )
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
-        resposta.place(relx=0.5,y=200, anchor=N)
+        resposta.place(relx=0.5,y=270, anchor=N)
 
     elif modo == 'devolver':
         h1 = Label(locadora, text='Qual filme deseja devolver', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
-        h1.place(relx=0.5,y=30, anchor='center')
+        h1.place(relx=0.5,y=110, anchor='center')
         texto = StringVar()
         info = Entry(locadora,textvariable=texto, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        info.place(relx=0.5, y=170, anchor='center', width=300, height=30)
         enviar_info = Button(locadora, text='Devolver', font=('Arial',12), width=7, command=fazer_devolucao, foreground='#2d3250', background='#ffcbcf')
-        enviar_info.place(relx=0.45,y=130, anchor='center')
+        enviar_info.place(relx=0.45,y=210, anchor='center')
         voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
-        voltar.place(relx=0.55, y=130, anchor='center' )
+        voltar.place(relx=0.55, y=210, anchor='center' )
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
-        resposta.place(relx=0.5,y=200, anchor=N)
+        resposta.place(relx=0.5,y=270, anchor=N)
 
     elif modo == 'cadastrar':
         h1 = Label(locadora, text='Adicione as informações do \n novo filme', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
@@ -193,37 +193,37 @@ def tela():
         resposta.place(relx=0.5,y=440, anchor=N)
     elif modo == 'remover':
         h1 = Label(locadora, text='Qual filme deseja remover?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
-        h1.place(relx=0.5,y=30, anchor='center')
+        h1.place(relx=0.5,y=110, anchor='center')
         texto = StringVar()
         info = Entry(locadora,textvariable=texto, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info.place(relx=0.5, y=90, anchor='center', width=300, height=30)
+        info.place(relx=0.5, y=170, anchor='center', width=300, height=30)
         enviar_info = Button(locadora, text='Remover', font=('Arial',12), width=7, command=fazer_remocao, foreground='#2d3250', background='#ffcbcf')
-        enviar_info.place(relx=0.45,y=130, anchor='center')
+        enviar_info.place(relx=0.45,y=210, anchor='center')
         voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
-        voltar.place(relx=0.55, y=130, anchor='center' )
+        voltar.place(relx=0.55, y=210, anchor='center' )
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
-        resposta.place(relx=0.5,y=200, anchor=N)    
+        resposta.place(relx=0.5,y=270, anchor=N)    
 
     elif modo == 'recomendar':
         h1 = Label(locadora, text='Que tipo de filme você gosta?', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
         h1.place(relx=0.5,y=50, anchor='center')
 
         label_c = Label (locadora, text='Classificacao indicativa:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        label_c.place(relx=0.4, y=120, anchor='center')
+        label_c.place(relx=0.4, y=110, anchor='center')
         classificacoes = ["L", "10", "12", "14","16","18"]
         classificacao = StringVar()
         classificacao.set("Classificacoes")
         menu_c = OptionMenu(locadora, classificacao, *classificacoes)
-        menu_c.place(relx=0.4, y=150, anchor='center')
+        menu_c.place(relx=0.4, y=140, anchor='center')
 
         label_g = Label (locadora, text='Genero:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        label_g.place(relx=0.6, y=120, anchor='center')
+        label_g.place(relx=0.6, y=110, anchor='center')
         generos = ['drama','romance','ficcao cientifica','acao','fantasia','aventura','animacao','terror','comedia']
         genero = StringVar()
         genero.set("Generos")
         menu_g = OptionMenu(locadora, genero, *generos, )
-        menu_g.place(relx=0.6, y=150, anchor='center')
+        menu_g.place(relx=0.6, y=140, anchor='center')
 
         enviar_info = Button(locadora, text='Encontrar filme', font=('Arial',12), command=fazer_recomendação, foreground='#2d3250', background='#ffcbcf')
         enviar_info.place(relx=0.4,y=190, anchor='center')
