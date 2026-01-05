@@ -45,21 +45,21 @@ def modo_inicio():
     tela()
 
 def tela():
-    def pegar_texto():
+    def pegar_texto(texto):
         return texto.get()
     
     def fazer_busca():
-        buscado = pegar_texto()
+        buscado = pegar_texto(texto)
         resultado = buscar_filme(buscado)
         resposta ['text'] = resultado
 
     def fazer_locacao():
-        locado = pegar_texto()
+        locado = pegar_texto(texto)
         resultado = locar_filme(locado)
         resposta ['text'] = resultado
 
     def fazer_devolucao():
-        devolvido = pegar_texto()
+        devolvido = pegar_texto(texto)
         resultado = devolver_filme(devolvido)
         resposta ['text'] = resultado
 
@@ -135,8 +135,44 @@ def tela():
         resposta.place(relx=0.5,y=200, anchor=N)
 
     elif modo == 'cadastrar':
-        h1 = Label()
+        h1 = Label(locadora, text='Adicione as informações do \n novo filme', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
+        h1.place(relx=0.5,y=50, anchor='center')
 
+        titulo_l = Label (locadora, text='Titulo:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        titulo_l.place(x=100, y=130)
+        titulo = StringVar()
+        info_t = Entry(locadora,textvariable=titulo, font=('Arial',12), background = "#606378", foreground = '#ffffff')
+        info_t.place(x=100, y=160,  width=600, height=30)
+
+        titulo_c = Label (locadora, text='Classificacao indicativa:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        titulo_c.place(x=100, y=200)
+        classificacoes = ["L", "10", "12", "14","16","18"]
+        classificacao = StringVar()
+        classificacao.set("Classificacoes")
+        menu_c = OptionMenu(locadora, classificacao, *classificacoes)
+        menu_c.place(x=100, y=230)
+
+        titulo_g = Label (locadora, text='Genero:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        titulo_g.place(x=100, y=270)
+        generos = ['drama','romance','ficcao cientifica','acao','fantasia','aventura','animacao','terror','comedia']
+        genero = StringVar()
+        genero.set("Generos")
+        menu_g = OptionMenu(locadora, genero, *generos, )
+        menu_g.place(x=100, y=300)
+
+        titulo_s = Label (locadora, text='Sinopse:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        titulo_s.place(x=100, y=340)
+        sinopse = StringVar()
+        info_s = Entry(locadora,textvariable=sinopse, font=('Arial',12), background = "#606378", foreground = '#ffffff')
+        info_s.place(x=100, y=370,  width=600, height=30)
+
+        enviar_info = Button(locadora, text='Cadastrar', font=('Arial',12), width=8, command='', foreground='#2d3250', background='#ffcbcf')
+        enviar_info.place(x=300,y=420)
+        voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
+        voltar.place(x=400, y=420)
+
+        resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
+        resposta.place(relx=0.5,y=200, anchor=N)
     elif modo == 'remover':
         h1 = Label()
     

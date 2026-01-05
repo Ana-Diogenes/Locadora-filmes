@@ -13,11 +13,7 @@ def mostrar_filmes():
                 catalogo += str(i) + ': ' + linha[0] +' (alugado)'+ '\n'
     return catalogo
 
-def inserir_filme():
-    titulo = input('Informe o titulo do filme: ')
-    classificacao = input('Informe a classificação indicativa do filme: ')
-    genero = input('Informe o genero do filme: ')
-    sinopse = input ('Informe a sinopse do filme: ')
+def inserir_filme(titulo, classificacao, genero, sinopse):
     mensagem = '\n'+ titulo +','+ classificacao +',' + genero.lower() +',' + sinopse + ',disponivel'
     with open('filmes.csv',"a") as filmes:
         filmes.write(mensagem)
