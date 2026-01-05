@@ -14,9 +14,12 @@ def mostrar_filmes():
     return catalogo
 
 def inserir_filme(titulo, classificacao, genero, sinopse):
+    if titulo =='' or classificacao =='Classificacoes' or genero =='Generos' or sinopse =='':
+        return 'Preencha os campos em branco'
     mensagem = '\n'+ titulo +','+ classificacao +',' + genero.lower() +',' + sinopse + ',disponivel'
     with open('filmes.csv',"a") as filmes:
         filmes.write(mensagem)
+    return 'Filme inserido com sucesso'
 
 def excluir_filme():
     excluido = input('Informe o nome do filme que deseja excluir: ')

@@ -63,6 +63,15 @@ def tela():
         resultado = devolver_filme(devolvido)
         resposta ['text'] = resultado
 
+    def fazer_cadastro():
+        titulo_cadastro = pegar_texto(titulo)
+        classificacao_cadastro = pegar_texto(classificacao)
+        genero_cadastro = pegar_texto(genero)
+        sinopse_cadastro = pegar_texto(sinopse)
+        resultado = inserir_filme(titulo_cadastro, classificacao_cadastro,genero_cadastro,sinopse_cadastro)
+        resposta ['text']=resultado
+
+
     limpar_tela(locadora)
     if modo == 'inicio':
         h1 = Label(locadora, text='Seja bem vindo a locadora!', background='#2d3250', font=('Arial',32,"bold"),foreground='#ffffff')
@@ -138,41 +147,41 @@ def tela():
         h1 = Label(locadora, text='Adicione as informações do \n novo filme', background='#2d3250', font=('Arial',32,"bold"), foreground='#ffffff')
         h1.place(relx=0.5,y=50, anchor='center')
 
-        titulo_l = Label (locadora, text='Titulo:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        titulo_l.place(x=100, y=130)
+        label_t = Label (locadora, text='Titulo:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_t.place(x=100, y=110)
         titulo = StringVar()
         info_t = Entry(locadora,textvariable=titulo, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info_t.place(x=100, y=160,  width=600, height=30)
+        info_t.place(x=100, y=140,  width=600, height=30)
 
-        titulo_c = Label (locadora, text='Classificacao indicativa:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        titulo_c.place(x=100, y=200)
+        label_c = Label (locadora, text='Classificacao indicativa:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_c.place(x=100, y=180)
         classificacoes = ["L", "10", "12", "14","16","18"]
         classificacao = StringVar()
         classificacao.set("Classificacoes")
         menu_c = OptionMenu(locadora, classificacao, *classificacoes)
-        menu_c.place(x=100, y=230)
+        menu_c.place(x=100, y=210)
 
-        titulo_g = Label (locadora, text='Genero:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        titulo_g.place(x=100, y=270)
+        label_g = Label (locadora, text='Genero:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_g.place(x=100, y=250)
         generos = ['drama','romance','ficcao cientifica','acao','fantasia','aventura','animacao','terror','comedia']
         genero = StringVar()
         genero.set("Generos")
         menu_g = OptionMenu(locadora, genero, *generos, )
-        menu_g.place(x=100, y=300)
+        menu_g.place(x=100, y=280)
 
-        titulo_s = Label (locadora, text='Sinopse:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
-        titulo_s.place(x=100, y=340)
+        label_s = Label (locadora, text='Sinopse:', background='#2d3250', font=('Arial',12), foreground='#ffffff')
+        label_s.place(x=100, y=320)
         sinopse = StringVar()
         info_s = Entry(locadora,textvariable=sinopse, font=('Arial',12), background = "#606378", foreground = '#ffffff')
-        info_s.place(x=100, y=370,  width=600, height=30)
+        info_s.place(x=100, y=350,  width=600, height=30)
 
-        enviar_info = Button(locadora, text='Cadastrar', font=('Arial',12), width=8, command='', foreground='#2d3250', background='#ffcbcf')
-        enviar_info.place(x=300,y=420)
+        enviar_info = Button(locadora, text='Cadastrar', font=('Arial',12), width=8, command=fazer_cadastro, foreground='#2d3250', background='#ffcbcf')
+        enviar_info.place(x=300,y=400)
         voltar = Button(locadora, text='Inicio', font=('Arial',12), command=modo_inicio, width=7, foreground='#2d3250', background='#ffcbcf')
-        voltar.place(x=400, y=420)
+        voltar.place(x=400, y=400)
 
         resposta = Label(locadora, text='',font=('Arial',12), background='#2d3250', wraplength=400, foreground='#ffffff')
-        resposta.place(relx=0.5,y=200, anchor=N)
+        resposta.place(relx=0.5,y=440, anchor=N)
     elif modo == 'remover':
         h1 = Label()
     
